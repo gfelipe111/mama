@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Tía Especial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #fdf8f5;
+        }
+        .font-serif-display { font-family: 'Playfair Display', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        
+        @keyframes float-up {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+        }
+        .sparkle {
+            position: fixed;
+            bottom: -20px;
+            pointer-events: none;
+            z-index: 5;
+            animation: float-up 12s linear infinite;
+        }
+
+        .paper-overlay {
+            background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+            opacity: 0.05;
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        
+        .card-container {
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .accent-line {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #fb923c, transparent);
+            width: 80px;
+            margin: 1.5rem auto;
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <div id="sparkle-container"></div>
+
+    <main class="min-h-screen flex items-center justify-center p-4 md:p-10">
+        <div class="max-w-xl w-full bg-white rounded-lg relative overflow-hidden card-container fade-in">
+            <div class="paper-overlay"></div>
+            
+            <div class="p-8 md:p-16 relative z-10 border-[16px] border-stone-50 m-2">
+                
+                <header class="text-center mb-12">
+                    <p class="text-orange-400 text-[10px] uppercase tracking-[0.5em] mb-4 font-bold">Un detalle con todo mi cariño</p>
+                    <h1 class="font-serif-display text-4xl md:text-5xl text-stone-900">Querida Tía</h1>
+                    <div class="accent-line"></div>
+                </header>
+
+                <div class="space-y-8 text-lg leading-relaxed text-stone-600 text-center">
+                    
+                    <p class="font-cursive text-4xl text-orange-400 leading-tight">
+                        Gracias por ser esa mezcla perfecta de guía, amiga y familia.
+                    </p>
+
+                    <div class="space-y-6 px-2">
+                        <p>
+                            En este día tan especial, no quería dejar pasar la oportunidad de decirte lo mucho que te admiro. Eres una mujer increíble que llena de luz cualquier lugar donde estás.
+                        </p>
+
+                        <p>
+                            Gracias por tu alegría contagiosa, por tus palabras de aliento y por estar siempre presente con esa sonrisa que reconforta. Tenerte en mi vida es una verdadera suerte.
+                        </p>
+                    </div>
+
+                    <div class="py-6">
+                        <span class="text-stone-200 text-4xl">✧</span>
+                    </div>
+
+                    <p class="italic font-serif-display text-xl text-stone-800">
+                        "Hay tías que dejan huella, pero tú dejas un camino de flores por donde pasas."
+                    </p>
+
+                    <div class="pt-12">
+                        <p class="font-cursive text-5xl text-stone-500">Te quiero mucho,</p>
+                        <p class="mt-4 text-[10px] font-bold tracking-[0.4em] text-orange-300 uppercase">Mayo 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function createSparkles() {
+            const container = document.getElementById('sparkle-container');
+            const icons = ['✨', '🧡', '🌿', '🌟', '🤍'];
+            
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('div');
+                span.className = 'sparkle text-lg';
+                span.innerText = icons[Math.floor(Math.random() * icons.length)];
+                
+                span.style.left = Math.random() * 100 + 'vw';
+                
+                const duration = 8 + Math.random() * 10;
+                const delay = Math.random() * 15;
+                span.style.animationDuration = duration + 's';
+                span.style.animationDelay = delay + 's';
+                
+                span.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                span.style.filter = `blur(${Math.random() * 0.5}px)`;
+                
+                container.appendChild(span);
+            }
+        }
+
+        window.onload = createSparkles;
+    </script>
+</body>
+</html>
