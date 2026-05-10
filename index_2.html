@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Abuela</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f7f3eb;
+        }
+        .font-serif-display { font-family: 'Playfair Display', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        
+        @keyframes drift {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translate(100px, -100vh) rotate(360deg); opacity: 0; }
+        }
+        .petal {
+            position: fixed;
+            bottom: -20px;
+            pointer-events: none;
+            z-index: 5;
+            animation: drift 10s linear infinite;
+        }
+
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+        }
+        
+        .border-elegant {
+            border: 1px solid #d4af37;
+            outline: 4px solid #fcfaf2;
+            outline-offset: -12px;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .line-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+    </style>
+</head>
+<body class="text-stone-800 selection:bg-stone-200">
+
+    <div id="petal-container"></div>
+
+    <main class="min-h-screen flex items-center justify-center p-6 md:p-12">
+        <div class="max-w-2xl w-full bg-white shadow-2xl rounded-sm relative overflow-hidden paper-texture border-elegant fade-in-up">
+            
+            <div class="p-10 md:p-20 relative">
+                <header class="text-center mb-16">
+                    <span class="block text-stone-400 uppercase tracking-[0.4em] text-[10px] mb-6">Un mensaje desde el corazón</span>
+                    <h1 class="font-serif-display text-5xl md:text-6xl italic text-stone-900 mb-4">Querida Abuela</h1>
+                    <div class="line-divider w-32 mx-auto"></div>
+                </header>
+
+                <div class="space-y-10 text-lg md:text-xl leading-relaxed text-stone-700 text-justify">
+                    
+                    <p class="font-cursive text-4xl text-stone-500 text-center mb-14 leading-tight">
+                        Gracias por ser el refugio donde siempre brilla el sol.
+                    </p>
+
+                    <p>
+                        A veces las palabras no alcanzan para expresar lo que significa tenerte en nuestras vidas. Eres la sabiduría que no necesita libros, la paciencia que nunca se agota y ese amor incondicional que nos ha dado raíces fuertes para crecer.
+                    </p>
+
+                    <p>
+                        En este día tan especial, quiero recordarte que tu presencia es el regalo más grande de nuestra familia. Gracias por cada historia, por cada enseñanza silenciosa y por ser el ejemplo de fortaleza y ternura que todos admiramos.
+                    </p>
+
+                    <div class="py-4 text-center">
+                         <span class="text-stone-300 text-3xl">✦ ✦ ✦</span>
+                    </div>
+
+                    <p class="text-center italic font-serif-display text-2xl text-stone-900 px-4">
+                        "Tu amor es el hilo invisible que nos mantiene unidos, hoy y siempre."
+                    </p>
+
+                    <div class="pt-16 text-center">
+                        <p class="font-cursive text-5xl text-stone-600">Con amor eterno,</p>
+                        <p class="mt-6 text-[10px] font-bold tracking-[0.3em] text-stone-400 uppercase">Tu familia que te adora</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-stone-50/50 py-3 text-center border-t border-stone-100">
+                <p class="text-[9px] text-stone-400 tracking-[0.2em] uppercase">Celebrando tu vida y tu luz</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function createPetals() {
+            const container = document.getElementById('petal-container');
+            const icons = ['🍃', '🌸', '✨', '🌿', '🤍'];
+            
+            for (let i = 0; i < 25; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal text-xl';
+                petal.innerText = icons[Math.floor(Math.random() * icons.length)];
+                
+                petal.style.left = Math.random() * 100 + 'vw';
+                
+                const duration = 10 + Math.random() * 10;
+                const delay = Math.random() * 15;
+                petal.style.animationDuration = duration + 's';
+                petal.style.animationDelay = delay + 's';
+                
+                petal.style.fontSize = (Math.random() * 12 + 12) + 'px';
+                petal.style.filter = `blur(${Math.random() * 1}px)`;
+                
+                container.appendChild(petal);
+            }
+        }
+
+        window.onload = createPetals;
+    </script>
+</body>
+</html>
